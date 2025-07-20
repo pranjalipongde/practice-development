@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --white: hsl(0, 100%, 100%);
+  --purple-100: hsl(275, 100%, 97%);
+  --purple-600: hsl(292, 16%, 49%);
+  --purple-950: hsl(292, 42%, 14%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Work Sans", sans-serif;
+}
+
+.wrapper {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  width: 100%;
+  background-color: var(--purple-100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40vh;
+  width: 100%;
+  background-image: url("./assets/images/background-pattern-desktop.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  z-index: 0;
+}
+
+.wrapper {
+  position: relative;
+  background-color: var(--purple-100);
+}
+
+.accordion {
+  width: 100%;
+  max-width: 450px;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 2rem;
+  z-index: 1;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.heading .star-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.accordion-que {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plus-button {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--purple-950);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.accordion-content {
+  display: none;
+  font-size: 0.875rem;
+  color: var(--purple-600);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.hr-line {
+  border: none;
+  height: 1px;
+  background-color: var(--purple-100);
+  margin: 1rem 0;
+}
