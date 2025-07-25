@@ -23,9 +23,5 @@ window.addEventListener("DOMContentLoaded", () => {
         `;
         summaryContainer.innerHTML += itemHTML;
       });
-
-      // Set average score (optional)
-      const avg = Math.round(total / data.length);
-      document.querySelector(".result-score").textContent = avg;
     });
 });
