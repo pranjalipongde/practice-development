@@ -31,7 +31,8 @@ body {
 .cards {
   display: flex;
   align-items: center;
-
+  border-radius: 10px;
+  overflow: hidden;
   max-width: 750px;
 }
 
@@ -95,12 +96,28 @@ p {
 }
 
 @media (max-width: 768px) {
+  .wrapper {
+    height: auto;
+    padding: 20px;
+  }
+
   .cards {
     flex-direction: column;
     max-width: 90%;
   }
 
   .card {
-    width: 100%;
+    width: 300px;
+    padding: 35px;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
   }
 }
