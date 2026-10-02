@@ -10,7 +10,6 @@ const ShortenForm = ({ onShorten }) => {
 
     const trimmedUrl = url.trim();
 
-    // Empty input
     if (!trimmedUrl) {
       setError("Please add a link");
       return;
@@ -20,7 +19,7 @@ const ShortenForm = ({ onShorten }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/shorten", {
+      const response = await fetch("/shorten", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,18 +31,15 @@ const ShortenForm = ({ onShorten }) => {
 
       const data = await response.json();
 
-      // Handle server/API error
       if (!response.ok || data.error) {
         throw new Error(data.error || "Unable to shorten this URL");
       }
 
-      // Send result to App
       onShorten({
         originalUrl: trimmedUrl,
         shortUrl: data.result_url,
       });
 
-      // Clear input
       setUrl("");
     } catch (error) {
       console.error("URL shortening error:", error);
@@ -57,14 +53,13 @@ const ShortenForm = ({ onShorten }) => {
   return (
     <section
       id="shortener"
-      className="relative z-10 mx-auto mb-20 max-w-277.5 px-6 md:-mb-16 lg:px-0"
+      className="relative z-10 mx-auto -mb-20 max-w-277.5 px-6 md:-mb-16 lg:px-0"
     >
       <div className="rounded-[10px] bg-brand-purple px-6 py-6 md:px-12 md:py-12">
         <form
           onSubmit={handleSubmit}
           className="flex flex-col gap-4 md:flex-row md:gap-6"
         >
-          {/* Input */}
           <div className="flex-1">
             <input
               type="url"
@@ -86,13 +81,11 @@ const ShortenForm = ({ onShorten }) => {
               }`}
             />
 
-            {/* Error */}
             {error && (
               <p className="mt-1 text-[12px] italic text-brand-red">{error}</p>
             )}
           </div>
 
-          {/* Button */}
           <button
             type="submit"
             disabled={isLoading}
