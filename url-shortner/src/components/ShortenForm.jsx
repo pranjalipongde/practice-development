@@ -10,7 +10,7 @@ const ShortenForm = ({ onShorten }) => {
 
     const trimmedUrl = url.trim();
 
-    // Empty input validation
+    // Empty input
     if (!trimmedUrl) {
       setError("Please add a link");
       return;
@@ -20,25 +20,19 @@ const ShortenForm = ({ onShorten }) => {
     setIsLoading(true);
 
     try {
-      // Prepare request body
-      const formData = new URLSearchParams();
-
-      formData.append("url", trimmedUrl);
-
-      // Send request to Clean URI
-      const response = await fetch("https://cleanuri.com/api/v1/shorten", {
+      const response = await fetch("http://localhost:5000/api/shorten", {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/json",
         },
-        body: formData,
+        body: JSON.stringify({
+          url: trimmedUrl,
+        }),
       });
 
       const data = await response.json();
 
-      console.log("Shortened URL response:", data);
-
-      // Handle API error
+      // Handle server/API error
       if (!response.ok || data.error) {
         throw new Error(data.error || "Unable to shorten this URL");
       }
@@ -63,7 +57,7 @@ const ShortenForm = ({ onShorten }) => {
   return (
     <section
       id="shortener"
-      className="relative z-10 mx-auto -mb-20 max-w-277.5 px-6 md:-mb-16 lg:px-0"
+      className="relative z-10 mx-auto mb-20 max-w-277.5 px-6 md:-mb-16 lg:px-0"
     >
       <div className="rounded-[10px] bg-brand-purple px-6 py-6 md:px-12 md:py-12">
         <form
@@ -98,7 +92,7 @@ const ShortenForm = ({ onShorten }) => {
             )}
           </div>
 
-          {/* Submit button */}
+          {/* Button */}
           <button
             type="submit"
             disabled={isLoading}

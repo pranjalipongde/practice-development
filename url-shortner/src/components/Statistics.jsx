@@ -6,7 +6,7 @@ import fullyCustomizable from "../assets/images/icon-fully-customizable.svg";
 
 const Statistics = () => {
   return (
-    <section className="bg-brand-gray-400/20 px-6 pb-24 pt-16 md:pb-28 md:pt-20">
+    <section className="bg-brand-gray-400/20 px-6 pb-24 pt-16  md:pb-28 md:pt-20">
       <div className="mx-auto max-w-277.5">
         {/* Section Heading */}
         <div className="mx-auto max-w-135 text-center">
