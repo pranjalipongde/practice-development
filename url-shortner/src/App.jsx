@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import ShortenForm from "./components/ShortenForm";
@@ -6,18 +8,30 @@ import Statistics from "./components/Statistics";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 
-const App = () => {
+function App() {
+  const [shortenedLinks, setShortenedLinks] = useState([]);
+
+  const handleShorten = (link) => {
+    setShortenedLinks((previousLinks) => [link, ...previousLinks]);
+  };
+
   return (
-    <main className="min-h-screen bg-white">
+    <main>
       <Navbar />
+
       <Hero />
-      <ShortenForm />
-      <ShortenedLinks />
+
+      <ShortenForm onShorten={handleShorten} />
+
+      <ShortenedLinks links={shortenedLinks} />
+
       <Statistics />
+
       <CTA />
+
       <Footer />
     </main>
   );
-};
+}
 
 export default App;
