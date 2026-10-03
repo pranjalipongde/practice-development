@@ -17,7 +17,6 @@ app.post("/shorten", async (req, res) => {
     }
 
     const formData = new URLSearchParams();
-
     formData.append("url", url);
 
     const response = await fetch("https://cleanuri.com/api/v1/shorten", {
@@ -36,11 +35,11 @@ app.post("/shorten", async (req, res) => {
       });
     }
 
-    return res.status(200).json({
+    return res.json({
       result_url: data.result_url,
     });
   } catch (error) {
-    console.error("Clean URI error:", error);
+    console.error(error);
 
     return res.status(500).json({
       error: "Something went wrong. Please try again.",
